@@ -4,20 +4,21 @@ Estudo campo
 K8s:
 
 * [ ] k3d
-		1 - master
-		3 - slave
+* 1 master
+* 3 slave
 		
 * [ ] 01
-		pod
-		deployment
-		service
-		ingress
+- pod
+- deployment
+- service
+- ingress
+
 * [ ] 02
-		cronjob
-		HPA cpu/men
-		HPA external metrics
-		Secret
-		ConfigMaps
+- cronjob
+- HPA cpu/men
+- HPA external metrics
+- Secret
+- ConfigMaps
 	  
 
 	  

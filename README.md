@@ -35,7 +35,7 @@ K8s:
 
 ## Subir cluster pelo yaml
 
-     kubectl apply -f k3d-configfile.yaml
+     kubectl apply -f k3dconfig.yaml
 		
 * [ ] 01
 - pod

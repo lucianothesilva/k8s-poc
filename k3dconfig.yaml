@@ -1,0 +1,30 @@
+# k3d configuration file, saved as e.g. /home/me/myk3dcluster.yaml
+apiVersion: k3d.io/v1alpha4
+kind: Simple # internally, we also have a Cluster config, which is not yet available externally
+metadata:
+  name: meucluster
+servers: 1
+agents: 3 
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+registries: # define how registries should be created or used
+  create: # creates a default registry to be used with the cluster; same as `--registry-create registry.localhost`
+    name: k8sestudos
+    host: "0.0.0.0"
+    hostPort: "5000"
+options:
+  k3d: # k3d runtime settings
+    wait: true # wait for cluster to be usable before returining; same as `--wait` (default: true)
+    timeout: "60s" # wait timeout before aborting; same as `--timeout 60s`
+  k3s: # options passed on to K3s itself
+    extraArgs: # additional arguments passed to the `k3s server|agent` command; same as `--k3s-arg`
+      - arg: --tls-san=k8sestudos.localhost
+        nodeFilters:
+          - server:*
+  kubeconfig:
+    updateDefaultKubeconfig: true # add new cluster to your default Kubeconfig;
+    switchCurrentContext: true # also set current-context to the new cluster's context;
+  runtime: # runtime (docker) specific options -VERIFICAR
+    gpuRequest: all # same as `--gpus all`
